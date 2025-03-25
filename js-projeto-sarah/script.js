@@ -85,7 +85,16 @@ function animateText() {
         }
     } else {
         if (index > 1){
-            titleElement.textContent = text.slice(0, index -1);
+            titleElement.textContent = text.slice(0, index -1); index --;
+        } else {
+            isTyping = true;
+            // altera a cor entre preto e laranja
+            currentColor = currentColor === (document.documentElement.classList.contains('light') ? 'black' : '#fff') ? '#c94c16' : (document.documentElement.classList.contains('light') ? 'black' : '#fff');
+            titleElement.style.color = currentColor;
         }
     }
+    setTimeout(animateText, 300);
 }
+
+// Inicia a animação quando carregar a página
+document.addEventListener('DOMContentLoaded', animateText); updateTextColor();
